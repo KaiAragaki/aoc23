@@ -17,7 +17,6 @@ n_matches <- sapply(data, \(x) x |> n_match())
 names(n_matches) <- NULL
 
 # Pt I
-
 calc_pts <- function(n_match) {
   ifelse(n_match == 0, 0, 2^(n_match - 1))
 }
@@ -25,15 +24,6 @@ calc_pts <- function(n_match) {
 calc_pts(n_matches) |> sum()
 
 # Pt II
-
-# Everyone starts with one card...
-# 1 1 1 1 1 1 1
-# If card 1 has 3 hits, then
-# 1 2 2 2 1 1 1
-# If card 2 has 2 hits then
-# 1 2 4 4 1 1 1
-# each downstream "point" gets adj by its current multiplier
-
 running_vec <- rep(1, times = length(n_matches))
 
 for (i in seq_along(n_matches)) {
